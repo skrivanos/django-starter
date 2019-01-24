@@ -2,7 +2,7 @@ import sentry_sdk
 from sentry_sdk.integrations.celery import CeleryIntegration
 from sentry_sdk.integrations.django import DjangoIntegration
 
-from .base import *
+from .base import *  # noqa: F403
 
 DEBUG = False
 

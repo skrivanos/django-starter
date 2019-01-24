@@ -1,6 +1,6 @@
 from iptools import IpRangeList
 
-from .base import *
+from .base import *  # noqa: F403
 
 DEBUG = True
 

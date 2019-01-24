@@ -143,12 +143,12 @@ CELERYD_TASK_SOFT_TIME_LIMIT = 60
 # Django webpack loader
 # https://github.com/owais/django-webpack-loader#default-configuration
 WEBPACK_LOADER = {
-    "DEFAULT": {
-        "CACHE": not DEBUG,
-        "BUNDLE_DIR_NAME": "/",
-        "STATS_FILE": os.path.join(ROOT_DIR, "webpack-stats.json"),
-        "POLL_INTERVAL": 0.1,
-        "TIMEOUT": None,
-        "IGNORE": [".*\.hot-update.js", ".+\.map"]
+    'DEFAULT': {
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME': '/',
+        'STATS_FILE': os.path.join(ROOT_DIR, 'webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'TIMEOUT': None,
+        'IGNORE': [r'.*\.hot-update.js', r'.+\.map']
     }
 }
