@@ -1,4 +1,4 @@
-import "../scss/main.scss";
-import HelloWorld from "./components/HelloWorld.vue";
+import '../scss/main.scss';
+import HelloWorld from './components/HelloWorld.vue';
 
-console.log("hello");
+console.log('hello');
