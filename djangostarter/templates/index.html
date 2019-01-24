@@ -1,0 +1,16 @@
+{% load render_bundle from webpack_loader %}
+
+<html>
+  <head>
+    {% render_bundle "vendor" "css" %}
+    {% render_bundle "main" "css" %}
+  </head>
+  <body>
+    <h1>Hello World</h1>
+
+    {% render_bundle "vendor" "js" %}
+    {% render_bundle "main" "js" %}
+  </body>
+</html>
+
+
