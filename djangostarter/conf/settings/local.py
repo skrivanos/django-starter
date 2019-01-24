@@ -1,5 +1,6 @@
-from .base import *
 from iptools import IpRangeList
+
+from .base import *
 
 DEBUG = True
 

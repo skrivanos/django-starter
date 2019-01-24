@@ -3,6 +3,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+
 import environ
 
 # Build paths inside the project like this: os.path.join(PROJECT_DIR, ...)
