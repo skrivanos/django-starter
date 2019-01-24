@@ -6,8 +6,8 @@
   "scripts": {
     "start": "HOT_RELOAD=1 webpack-dev-server --mode development",
     "build": "NODE_ENV=production webpack --mode production",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint": "eslint . --ext .js,.vue",
+    "lint:fix": "eslint . --ext .js,.vue --fix"
   },
   "dependencies": {
     "vue": "^2.5.22"
