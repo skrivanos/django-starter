@@ -1,1 +1,3 @@
-from .user import User  # noqa: F401
+from ..utils.imports import import_submodules
+
+__all__ = import_submodules(__name__).keys()
