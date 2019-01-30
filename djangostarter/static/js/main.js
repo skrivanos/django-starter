@@ -1,4 +1,7 @@
 import '../scss/main.scss';
-import HelloWorld from './components/HelloWorld.vue';
+import Vue from 'vue';
+import App from './App.vue';
 
-console.log('hello');
+new Vue({
+  render: h => h(App)
+}).$mount('#app');

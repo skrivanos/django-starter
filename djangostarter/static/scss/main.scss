@@ -1,7 +1,10 @@
-html, body {
+@tailwind preflight;
+@tailwind components;
 
-}
+// Import any custom components below.
+// @import 'components/foo'
 
-* {
-  box-sizing: border-box;
-}
+@tailwind utilities;
+
+// Import any custom utilities below.
+// @import 'utilities/bar'

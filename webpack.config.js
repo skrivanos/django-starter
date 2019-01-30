@@ -1,6 +1,8 @@
 const path = require('path');
+const glob = require('glob-all');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
+const tailwindcss = require('tailwindcss');
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
@@ -12,6 +14,8 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const SentryCliPlugin = require('@sentry/webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const PurgecssPlugin = require('purgecss-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const devMode = process.env.NODE_ENV !== 'production';
 const hotReload = process.env.HOT_RELOAD === '1';
@@ -43,11 +47,7 @@ const styleRule = {
     {
       loader: 'postcss-loader',
       options: {
-        plugins: () => [
-          autoprefixer({
-            browsers: ['last 2 versions']
-          })
-        ]
+        plugins: () => [tailwindcss('./tailwind.js'), autoprefixer()]
       }
     },
     'sass-loader'
@@ -80,6 +80,7 @@ const plugins = [
     filename: devMode ? '[name].css' : '[name].[hash].css',
     chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
   }),
+  new StyleLintPlugin(),
   new BundleAnalyzerPlugin({
     analyzerMode: 'static',
     openAnalyzer: false
@@ -95,10 +96,32 @@ const plugins = [
   ])
 ];
 
+// Custom PurgeCSS extractor for Tailwind that allows special characters in
+// class names.
+//
+// https://github.com/FullHuman/purgecss#extractor
+class TailwindExtractor {
+  static extract(content) {
+    return content.match(/[A-Za-z0-9-_:/]+/g) || [];
+  }
+}
+
 if (devMode) {
   styleRule.use = ['css-hot-loader', ...styleRule.use];
 } else {
   plugins.push(
+    new PurgecssPlugin({
+      paths: glob.sync([
+        path.join(appDir, '**/*.html'),
+        path.join(appDir, '**/*.vue')
+      ]),
+      extractors: [
+        {
+          extractor: TailwindExtractor,
+          extensions: ['html', 'js', 'vue']
+        }
+      ]
+    }),
     new webpack.EnvironmentPlugin([
       'NODE_ENV',
       'RAVEN_JS_DSN',
