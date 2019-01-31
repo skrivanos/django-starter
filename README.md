@@ -10,10 +10,3 @@ git init
 git add .
 git commit -m "Initial commit."
 ```
-
-## Hooks
-
-```
-flake8 --install-hook git
-git config --bool flake8.strict true
-```
