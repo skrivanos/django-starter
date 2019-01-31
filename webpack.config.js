@@ -1,11 +1,10 @@
 const path = require('path');
-const glob = require('glob-all');
+const glob = require('glob');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const tailwindcss = require('tailwindcss');
 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const BundleTracker = require('webpack-bundle-tracker');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -18,7 +17,10 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const devMode = process.env.NODE_ENV !== 'production';
 const hotReload = process.env.HOT_RELOAD === '1';
-const appDir = './djangostarter/';
+const paths = {
+  src: path.join(__dirname, 'djangostarter'),
+  dist: path.join(__dirname, 'dist')
+};
 
 const eslintRule = {
   enforce: 'pre',
@@ -50,7 +52,7 @@ const styleRule = {
 const jsRule = {
   test: /\.(js|jsx)$/,
   loader: 'babel-loader',
-  include: path.resolve(appDir, './static/js'),
+  include: path.resolve(paths.src, './static/js'),
   exclude: /node_modules/
 };
 
@@ -81,7 +83,7 @@ const plugins = [
   new CleanWebpackPlugin(['./dist']),
   new CopyWebpackPlugin([
     {
-      from: path.resolve(appDir, './static/images/**/*'),
+      from: path.resolve(paths.src, './static/images/**/*'),
       to: path.resolve('./dist/images/[name].[ext]'),
       toType: 'template'
     }
@@ -103,14 +105,11 @@ if (devMode) {
 } else {
   plugins.push(
     new PurgecssPlugin({
-      paths: glob.sync([
-        path.join(appDir, '**/*.html'),
-        path.join(appDir, '**/*.jsx')
-      ]),
+      paths: glob.sync(`${paths.src}/**/*.{html,js,jsx}`),
       extractors: [
         {
           extractor: TailwindExtractor,
-          extensions: ['html', 'js', 'vue']
+          extensions: ['html', 'js', 'jsx']
         }
       ]
     }),
@@ -134,9 +133,9 @@ if (devMode) {
 
 module.exports = {
   context: __dirname,
-  entry: path.resolve(appDir, './static/js/index.jsx'),
+  entry: path.resolve(paths.src, './static/js/index.jsx'),
   output: {
-    path: path.resolve('./dist/'),
+    path: paths.dist,
     filename: '[name]-[hash].js',
     publicPath: hotReload ? 'http://localhost:8080/' : ''
   },

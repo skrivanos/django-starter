@@ -25,7 +25,7 @@ View the full documentation at https://tailwindcss.com.
 */
 
 // eslint-disable-next-line no-unused-vars
-let defaultConfig = require('tailwindcss/defaultConfig')();
+const defaultConfig = require('tailwindcss/defaultConfig')();
 
 /*
 |-------------------------------------------------------------------------------
@@ -43,7 +43,7 @@ let defaultConfig = require('tailwindcss/defaultConfig')();
 |
 */
 
-let colors = {
+const colors = {
   transparent: 'transparent',
 
   black: '#22292f',
@@ -143,7 +143,7 @@ module.exports = {
   |
   */
 
-  colors: colors,
+  colors,
 
   /*
   |-----------------------------------------------------------------------------
@@ -925,6 +925,7 @@ module.exports = {
   */
 
   plugins: [
+    // eslint-disable-next-line global-require
     require('tailwindcss/plugins/container')({
       // center: true,
       // padding: '1rem',
