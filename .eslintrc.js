@@ -1,23 +1,23 @@
 module.exports = {
   root: true,
   env: {
+    browser: true,
     node: true
   },
   extends: [
-    "eslint:recommended",
-    "plugin:vue/essential",
-    "plugin:prettier/recommended",
-    "prettier/vue"
+    'airbnb',
+    'plugin:prettier/recommended',
+    'prettier/react'
   ],
   plugins: [
-    "prettier"
+    'prettier'
   ],
   rules: {
-    "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
-    "prettier/prettier": "error"
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'prettier/prettier': 'error'
   },
   parserOptions: {
-    parser: "babel-eslint"
+    parser: 'babel-eslint'
   }
 };

@@ -13,7 +13,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const SentryCliPlugin = require('@sentry/webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
@@ -23,14 +22,8 @@ const appDir = './djangostarter/';
 
 const eslintRule = {
   enforce: 'pre',
-  test: /\.(js|vue)$/,
+  test: /\.(js|jsx)$/,
   loader: 'eslint-loader',
-  exclude: /node_modules/
-};
-
-const vueRule = {
-  test: /\.vue$/,
-  use: 'vue-loader',
   exclude: /node_modules/
 };
 
@@ -55,7 +48,7 @@ const styleRule = {
 };
 
 const jsRule = {
-  test: /\.js$/,
+  test: /\.(js|jsx)$/,
   loader: 'babel-loader',
   include: path.resolve(appDir, './static/js'),
   exclude: /node_modules/
@@ -75,7 +68,6 @@ const plugins = [
     $: 'jquery'
   }),
   new BundleTracker({ filename: './webpack-stats.json' }),
-  new VueLoaderPlugin(),
   new MiniCssExtractPlugin({
     filename: devMode ? '[name].css' : '[name].[hash].css',
     chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
@@ -113,7 +105,7 @@ if (devMode) {
     new PurgecssPlugin({
       paths: glob.sync([
         path.join(appDir, '**/*.html'),
-        path.join(appDir, '**/*.vue')
+        path.join(appDir, '**/*.jsx')
       ]),
       extractors: [
         {
@@ -142,7 +134,7 @@ if (devMode) {
 
 module.exports = {
   context: __dirname,
-  entry: path.resolve(appDir, './static/js/main.js'),
+  entry: path.resolve(appDir, './static/js/index.jsx'),
   output: {
     path: path.resolve('./dist/'),
     filename: '[name]-[hash].js',
@@ -156,7 +148,7 @@ module.exports = {
     disableHostCheck: true // Currently some webpack bug: https://github.com/webpack/webpack-dev-server/issues/1604
   },
   module: {
-    rules: [eslintRule, vueRule, jsRule, styleRule, assetRule]
+    rules: [eslintRule, jsRule, styleRule, assetRule]
   },
   externals: {
     jquery: 'jQuery',
@@ -181,5 +173,8 @@ module.exports = {
         }
       }
     }
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
   }
 };
