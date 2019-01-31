@@ -80,11 +80,11 @@ const plugins = [
     openAnalyzer: false
   }),
   new webpack.HotModuleReplacementPlugin(),
-  new CleanWebpackPlugin(['./dist']),
+  new CleanWebpackPlugin([paths.dist]),
   new CopyWebpackPlugin([
     {
       from: path.resolve(paths.src, './static/images/**/*'),
-      to: path.resolve('./dist/images/[name].[ext]'),
+      to: path.resolve(paths.dist, './images/[name].[ext]'),
       toType: 'template'
     }
   ])
