@@ -10,12 +10,14 @@ module.exports = {
     'prettier/react'
   ],
   plugins: [
-    'prettier'
+    'prettier',
+    'react-hooks'
   ],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'prettier/prettier': 'error'
+    'prettier/prettier': 'error',
+    'react-hooks/rules-of-hooks': 'error'
   },
   parserOptions: {
     parser: 'babel-eslint'
