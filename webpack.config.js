@@ -22,45 +22,6 @@ const paths = {
   dist: path.join(__dirname, 'dist')
 };
 
-const eslintRule = {
-  enforce: 'pre',
-  test: /\.(js|jsx)$/,
-  loader: 'eslint-loader',
-  exclude: /node_modules/
-};
-
-const styleRule = {
-  test: /\.(sa|sc|c)ss$/,
-  use: [
-    MiniCssExtractPlugin.loader,
-    {
-      loader: 'css-loader',
-      options: {
-        sourceMap: true
-      }
-    },
-    {
-      loader: 'postcss-loader',
-      options: {
-        plugins: () => [tailwindcss('./tailwind.js'), autoprefixer()]
-      }
-    },
-    'sass-loader'
-  ]
-};
-
-const jsRule = {
-  test: /\.(js|jsx)$/,
-  loader: 'babel-loader',
-  include: path.resolve(paths.src, './static/js'),
-  exclude: /node_modules/
-};
-
-const assetRule = {
-  test: /.(jpg|png|woff(2)?|eot|ttf|svg)$/,
-  loader: 'file-loader'
-};
-
 const plugins = [
   new webpack.ProvidePlugin({
     'window.Sentry': 'Sentry',
@@ -100,9 +61,7 @@ class TailwindExtractor {
   }
 }
 
-if (devMode) {
-  styleRule.use = ['css-hot-loader', ...styleRule.use];
-} else {
+if (!devMode) {
   plugins.push(
     new PurgecssPlugin({
       paths: glob.sync(`${paths.src}/**/*.{html,js,jsx}`),
@@ -147,7 +106,43 @@ module.exports = {
     disableHostCheck: true // Currently some webpack bug: https://github.com/webpack/webpack-dev-server/issues/1604
   },
   module: {
-    rules: [eslintRule, jsRule, styleRule, assetRule]
+    rules: [
+      {
+        enforce: 'pre',
+        test: /\.(js|jsx)$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(js|jsx)$/,
+        loader: 'babel-loader',
+        include: path.resolve(paths.src, './static/js'),
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: (devMode ? ['css-hot-loader'] : []).concat([
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [tailwindcss('./tailwind.js'), autoprefixer()]
+            }
+          },
+          'sass-loader'
+        ])
+      },
+      {
+        test: /.(jpg|png|woff(2)?|eot|ttf|svg)$/,
+        loader: 'file-loader'
+      }
+    ]
   },
   externals: {
     jquery: 'jQuery',
