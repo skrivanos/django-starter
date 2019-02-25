@@ -47,6 +47,3 @@ createdb -O vagrant vagrant
 # Log dirs
 sudo mkdir /var/log/app
 sudo chown vagrant:vagrant /var/log/app
-
-# Install NPM stuff
-sudo npm install -g stripe-local
