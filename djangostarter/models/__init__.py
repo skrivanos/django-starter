@@ -1,3 +1,4 @@
-from ..utils.imports import import_submodules
+# Import all models. Not using an automatic import here since we want IDE
+# auto-completion etc. to work properly.
 
-__all__ = import_submodules(__name__).keys()
+from .user import User
