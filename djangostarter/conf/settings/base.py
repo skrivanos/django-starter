@@ -45,7 +45,6 @@ INSTALLED_APPS = [
 
     # Third party
     'django_extensions',
-    'webpack_loader',
 
     # Internal
     'djangostarter'
@@ -145,17 +144,3 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERYD_TASK_TIME_LIMIT = 5 * 60
 CELERYD_TASK_SOFT_TIME_LIMIT = 60
-
-
-# Django webpack loader
-# https://github.com/owais/django-webpack-loader#default-configuration
-WEBPACK_LOADER = {
-    'DEFAULT': {
-        'CACHE': not DEBUG,
-        'BUNDLE_DIR_NAME': '/',
-        'STATS_FILE': os.path.join(ROOT_DIR, 'webpack-stats.json'),
-        'POLL_INTERVAL': 0.1,
-        'TIMEOUT': None,
-        'IGNORE': [r'.*\.hot-update.js', r'.+\.map']
-    }
-}

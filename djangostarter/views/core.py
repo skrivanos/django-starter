@@ -1,8 +1,7 @@
-from django.views.generic import TemplateView
+from django.http import HttpResponse
+from django.views import View
 
 
-class IndexView(TemplateView):
-    template_name = 'index.html'
-
+class IndexView(View):
     def get(self, request, *args, **kwargs):
-        return super(IndexView, self).get(request, *args, **kwargs)
+        return HttpResponse('Hello World!')

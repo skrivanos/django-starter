@@ -71,7 +71,3 @@ sentry_sdk.init(
         CeleryIntegration()
     ]
 )
-
-
-# Webpack loader
-WEBPACK_LOADER['DEFAULT']['CACHE'] = not DEBUG

@@ -5,7 +5,4 @@ __pycache__
 .env
 .DS_Store
 .vagrant/
-node_modules/
 *.swp
-webpack-stats.json
-dist/
