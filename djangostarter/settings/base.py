@@ -15,7 +15,7 @@ PROJECT_DIR = os.path.dirname(
 ROOT_DIR = os.path.dirname(PROJECT_DIR)
 
 env = environ.Env()
-dotenv = os.path.join(ROOT_DIR, ".env")
+dotenv = os.path.join(ROOT_DIR, "django-starter/.env")
 if os.path.exists(dotenv):
     env.read_env(dotenv)
 
@@ -60,12 +60,12 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "djangostarter.conf.urls"
+ROOT_URLCONF = "djangostarter.urls"
 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(PROJECT_DIR, "templates")],
+        "DIRS": [os.path.join(PROJECT_DIR, "djangostarter/templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -78,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "djangostarter.conf.wsgi.application"
+WSGI_APPLICATION = "djangostarter.wsgi.application"
 
 
 # Password validation
@@ -120,7 +120,7 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(ROOT_DIR, "static")
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_DIR, "static"),
+    os.path.join(PROJECT_DIR, "djangostarter/static"),
 ]
 
 
