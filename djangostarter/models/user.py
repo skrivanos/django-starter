@@ -4,4 +4,8 @@ from django.utils.translation import gettext_lazy as _
 
 
 class User(AbstractUser):
+    """
+    Custom user model.
+    """
+
     example = models.BooleanField(_("Example"))

@@ -1,6 +1,6 @@
 # Setting for test performance
 
-from .base import *  # noqa: F403
+from .base import *
 
 DEBUG = False
 

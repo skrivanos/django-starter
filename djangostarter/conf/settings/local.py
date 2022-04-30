@@ -1,10 +1,15 @@
 from iptools import IpRangeList
 
-from .base import *  # noqa: F403
+from .base import *
 
 DEBUG = True
 
-ALLOWED_HOSTS = ("localhost", "127.0.0.1", "0.0.0.0", ".test")
+ALLOWED_HOSTS = (
+    "localhost",
+    "127.0.0.1",
+    "0.0.0.0",  # noqa: S104
+    "[::1]",
+)
 
 
 # Caches

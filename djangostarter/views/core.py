@@ -3,5 +3,12 @@ from django.views import View
 
 
 class IndexView(View):
-    def get(self, request, *args, **kwargs):
+    """
+    Index view.
+    """
+
+    def get(self, request, *args, **kwargs) -> HttpResponse:
+        """
+        Example route.
+        """
         return HttpResponse("Hello World!")
