@@ -20,13 +20,14 @@ from django.urls import include, path
 from djangostarter.views.core import IndexView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', IndexView.as_view(), name='index'),
+    path("admin/", admin.site.urls),
+    path("", IndexView.as_view(), name="index"),
 ]
 
 
 if settings.DEBUG:
     import debug_toolbar
+
     urlpatterns = [
-        path('__debug__/', include(debug_toolbar.urls)),
+        path("__debug__/", include(debug_toolbar.urls)),
     ] + urlpatterns
