@@ -20,11 +20,6 @@ CACHES = {
     }
 }
 
-
-# Templates
-TEMPLATES[0]["OPTIONS"]["debug"] = DEBUG
-
-
 # Debug toolbar
 INSTALLED_APPS += ["debug_toolbar"]
 MIDDLEWARE = ["debug_toolbar.middleware.DebugToolbarMiddleware"] + MIDDLEWARE

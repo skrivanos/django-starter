@@ -33,19 +33,6 @@ CACHES = {"default": env.cache("DJANGO_CACHE_URL")}
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 
 
-# Templates
-TEMPLATES[0]["OPTIONS"]["debug"] = DEBUG
-TEMPLATES[0]["OPTIONS"]["loaders"] = [
-    (
-        "django.template.loaders.cached.Loader",
-        [
-            "django.template.loaders.filesystem.Loader",
-            "django.template.loaders.app_directories.Loader",
-        ],
-    )
-]
-
-
 # Celery
 CELERY_BROKER_URL = env("CELERY_BROKER_URL")
 CELERY_RESULT_BACKEND = CELERY_BROKER_URL
