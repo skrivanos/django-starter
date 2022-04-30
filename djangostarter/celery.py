@@ -1,6 +1,6 @@
 import os
 
-from celery import Celery
+from celery import Celery, Task
 
 # set the default Django settings module for the 'celery' program.
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djangostarter.settings.local")
@@ -18,7 +18,7 @@ app.autodiscover_tasks()
 
 
 @app.task(bind=True)
-def debug_task(self):
+def debug_task(self: Task) -> None:
     """
     Example task that prints the request.
     """
