@@ -20,11 +20,6 @@ SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = "DENY"
 
 
-# Databases
-DATABASES["default"] = env.db("DJANGO_DATABASE_URL")
-DATABASES["default"]["ATOMIC_REQUESTS"] = True
-
-
 # Caches
 CACHES = {"default": env.cache("DJANGO_CACHE_URL")}
 

@@ -32,7 +32,6 @@ DEBUG = False
 
 # Databases
 DATABASES = {"default": env.db("DJANGO_DATABASE_URL")}
-DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 
 # Application definition
