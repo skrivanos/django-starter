@@ -4,19 +4,18 @@ Base project settings.
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-import os
+from pathlib import Path
 
 import environ
 
-# Build paths inside the project like this: os.path.join(PROJECT_DIR, ...)
-PROJECT_DIR = os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-)
-ROOT_DIR = os.path.dirname(PROJECT_DIR)
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+PROJECT_DIR = Path(__file__).resolve().parent.parent
+ROOT_DIR = PROJECT_DIR.parent
 
 env = environ.Env()
-dotenv = os.path.join(ROOT_DIR, "django-starter/.env")
-if os.path.exists(dotenv):
+dotenv = ROOT_DIR / ".env"
+
+if dotenv.exists():
     env.read_env(dotenv)
 
 
@@ -64,7 +63,7 @@ ROOT_URLCONF = "djangostarter.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(PROJECT_DIR, "djangostarter/templates")],
+        "DIRS": [PROJECT_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -116,11 +115,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(ROOT_DIR, "static")
+STATIC_ROOT = ROOT_DIR / "static"
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [
-    os.path.join(PROJECT_DIR, "djangostarter/static"),
-]
+STATICFILES_DIRS = [PROJECT_DIR / "static"]
 
 
 # Default primary key field type
