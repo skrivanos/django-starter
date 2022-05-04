@@ -8,4 +8,4 @@ class User(AbstractUser):
     Custom user model.
     """
 
-    example = models.BooleanField(_("Example"))
+    example = models.CharField(_("Example"), blank=True, max_length=255)
