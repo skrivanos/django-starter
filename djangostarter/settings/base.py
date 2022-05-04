@@ -36,6 +36,7 @@ DATABASES = {"default": env.db("DJANGO_DATABASE_URL")}
 # Application definition
 
 INSTALLED_APPS = [
+    "jazzmin",  # has to go before django.contrib.admin
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
