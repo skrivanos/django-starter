@@ -12,6 +12,7 @@ django = "^4.0.4"
 django-anymail = "^8.5"
 django-environ = "^0.8.1"
 django-extensions = "^3.1.5"
+whitenoise = "^6.0.0"
 
 # Libs
 celery = "^5.2.6"

@@ -25,7 +25,7 @@ CACHES = {"default": env.cache("DJANGO_CACHE_URL")}
 
 
 # Static
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 # Celery
