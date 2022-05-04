@@ -13,6 +13,7 @@ django-anymail = "^8.5"
 django-environ = "^0.8.1"
 django-extensions = "^3.1.5"
 django-jazzmin = "^2.5.0"
+django-querycount = "^0.7.0"
 whitenoise = "^6.0.0"
 
 # Libs
