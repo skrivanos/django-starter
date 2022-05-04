@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Third party
-    "extra_checks",
     "django_extensions",
     # Internal
     "djangostarter",

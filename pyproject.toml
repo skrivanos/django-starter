@@ -12,9 +12,7 @@ django = "^4.0.4"
 django-anymail = "^8.5"
 django-environ = "^0.8.1"
 django-extensions = "^3.1.5"
-django-extra-checks = "^0.11.0"
 django-jazzmin = "^2.5.0"
-django-querycount = "^0.7.0"
 whitenoise = "^6.0.0"
 
 # Libs
@@ -26,6 +24,8 @@ psycopg2-binary = "^2.9.3"
 [tool.poetry.dev-dependencies]
 # Django
 django-debug-toolbar = "^3.3.0"
+django-extra-checks = "^0.11.0"
+django-querycount = "^0.7.0"
 werkzeug = "<2.1"  # needed for django_extensions runserver_plus
 
 # Tests

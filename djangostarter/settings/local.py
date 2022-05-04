@@ -21,7 +21,7 @@ CACHES = {
 }
 
 # Debug toolbar
-INSTALLED_APPS += ["debug_toolbar"]
+INSTALLED_APPS += ["debug_toolbar", "extra_checks"]
 MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "querycount.middleware.QueryCountMiddleware",
