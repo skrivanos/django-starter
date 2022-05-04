@@ -6,7 +6,6 @@ from sentry_sdk.integrations.django import DjangoIntegration
 from .base import *
 
 DEBUG = False
-
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS")
 

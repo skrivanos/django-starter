@@ -17,6 +17,22 @@ repos:
           - celery==5.2.6
           - django-stubs==1.10.1
           - celery-types==0.12.0
+  - repo: local
+    hooks:
+      - id: migrations-check
+        language: system
+        name: migrations
+        entry: bash -c "./manage.py makemigrations --check --dry-run"
+        types: ["python"]
+        pass_filenames: false
+  - repo: local
+    hooks:
+      - id: django-check
+        language: system
+        name: django
+        entry: bash -c "./manage.py check"
+        types: ["python"]
+        pass_filenames: false
   - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
     rev: v1.0.0
     hooks:
