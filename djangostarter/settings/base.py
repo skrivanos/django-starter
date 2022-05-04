@@ -6,18 +6,23 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 
+import django_stubs_ext
 import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 ROOT_DIR = PROJECT_DIR.parent
 
+# Monkey-patching for django-stubs
+# https://github.com/typeddjango/django-stubs/tree/master/django_stubs_ext
+django_stubs_ext.monkeypatch()
+
+# Setup env
 env = environ.Env()
 dotenv = ROOT_DIR / ".env"
 
 if dotenv.exists():
     env.read_env(dotenv)
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
