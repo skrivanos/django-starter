@@ -6,17 +6,17 @@ exclude =
 extend-ignore = C812, D100, D104, D200, D401, E203
 per-file-ignores =
   # Allow __init__.py with logic for Celery
-  djangostarter/__init__.py: WPS410, WPS412
+  app/__init__.py: WPS410, WPS412
   # Allow incorrect module naming and magic numbers in migrations
-  djangostarter/migrations/*.py: WPS102, WPS114, WPS432
+  app/migrations/*.py: WPS102, WPS114, WPS432
   # Allow unused and star imports, string literal overuse, relative imports and mutable constants in settings
-  djangostarter/settings/*.py: F401, F403, F405, WPS226, WPS300, WPS347, WPS407
+  app/settings/*.py: F401, F403, F405, WPS226, WPS300, WPS347, WPS407
   # Allow __init__.py with logic, relative imports and unused imports to re-export models
-  djangostarter/models/__init__.py: F401, WPS300, WPS412
+  app/models/__init__.py: F401, WPS300, WPS412
   # Allow magic numbers in models
-  djangostarter/models/*.py: WPS432
+  app/models/*.py: WPS432
   # Allow using print in commands
-  djangostarter/management/commands/*.py: WPS421
+  app/management/commands/*.py: WPS421
   # Allow using asserts and magic numbers in tests
   tests/*.py: S101, WPS432
 

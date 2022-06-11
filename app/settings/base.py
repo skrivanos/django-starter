@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     # Third party
     "django_extensions",
     # Internal
-    "djangostarter",
+    "app",
 ]
 
 MIDDLEWARE = [
@@ -65,7 +65,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "djangostarter.urls"
+ROOT_URLCONF = "app.urls"
 
 TEMPLATES = [
     {
@@ -83,7 +83,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "djangostarter.wsgi.application"
+WSGI_APPLICATION = "app.wsgi.application"
 
 
 # Password validation
@@ -134,7 +134,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 # Auth
-AUTH_USER_MODEL = "djangostarter.User"
+AUTH_USER_MODEL = "app.User"
 
 
 # Celery
