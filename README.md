@@ -1,11 +1,28 @@
+# Django Starter
+
 ## Getting started
 
+## Prepare new repo
 ```
-git clone https://github.com/skrivanos/django-starter.git
-cd django-starter
+git clone https://github.com/skrivanos/django-starter.git myapp
+cd myapp
 rm -rf .git
-grep "djangostarter" . -Rl|xargs gsed -i 's/djangostarter/PROJECT_NAME/g'
 git init
 git add .
 git commit -m "Initial commit."
+```
+
+
+## Install deps and venv
+
+```
+pip install poetry 
+poetry install
+```
+
+## Install pre-commit hooks
+```
+poetry shell
+pre-commit install
+pre-commit install --hook-type commit-msg
 ```
