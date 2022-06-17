@@ -4,6 +4,7 @@ from typing import TYPE_CHECKING, Any
 
 from celery import Celery, Task
 
+
 if TYPE_CHECKING:
     AnyTask = Task[Any, Any]  # type: ignore
 else:

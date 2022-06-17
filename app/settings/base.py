@@ -9,6 +9,7 @@ from pathlib import Path
 import django_stubs_ext
 import environ
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 ROOT_DIR = PROJECT_DIR.parent

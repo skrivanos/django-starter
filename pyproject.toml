@@ -76,6 +76,7 @@ skip_glob = [
   "**/migrations/*.py"
 ]
 lines_between_types = 1
+lines_after_imports = 2
 combine_star = true
 
 [tool.mypy]
