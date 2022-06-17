@@ -2,3 +2,7 @@
 # auto-completion etc. to work properly.
 
 from .user import User
+
+__all__ = [  # noqa: WPS410
+    "User",
+]
