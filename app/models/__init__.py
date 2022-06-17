@@ -3,6 +3,6 @@
 
 from .user import User
 
-__all__ = [  # noqa: WPS410
+__all__ = [
     "User",
 ]

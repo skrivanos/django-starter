@@ -14,7 +14,7 @@ per-file-ignores =
   # Allow unused and star imports, string literal overuse and mutable constants in settings
   app/settings/*.py: F401, F403, F405, WPS226, WPS347, WPS407
   # Allow __init__.py with logic and unused imports to re-export models
-  app/models/__init__.py: F401, WPS412
+  app/models/__init__.py: F401, WPS410, WPS412
   # Allow uppercase constants, nested classes and magic numbers in models
   app/models/*.py: WPS115, WPS431, WPS432
   # Allow using print in commands
