@@ -1,6 +1,13 @@
 import os
 
+from typing import TYPE_CHECKING, Any
+
 from celery import Celery, Task
+
+if TYPE_CHECKING:
+    AnyTask = Task[Any, Any]  # type: ignore
+else:
+    AnyTask = Task
 
 # set the default Django settings module for the 'celery' program.
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "app.settings.local")
@@ -18,7 +25,7 @@ app.autodiscover_tasks()
 
 
 @app.task(bind=True)
-def debug_task(self: Task) -> None:
+def debug_task(self: AnyTask) -> None:
     """
     Example task that prints the request.
     """
