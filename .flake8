@@ -15,8 +15,8 @@ per-file-ignores =
   app/settings/*.py: F401, F403, F405, WPS226, WPS347, WPS407
   # Allow __init__.py with logic and unused imports to re-export models
   app/models/__init__.py: F401, WPS412
-  # Allow uppercase constants and magic numbers in models
-  app/models/*.py: WPS115, WPS432
+  # Allow uppercase constants, nested classes and magic numbers in models
+  app/models/*.py: WPS115, WPS431, WPS432
   # Allow using print in commands
   app/management/commands/*.py: WPS421
   # Allow using asserts and magic numbers in tests
