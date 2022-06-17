@@ -112,7 +112,7 @@ plugins = [
 
 [[tool.mypy.overrides]]
 # Django migrations should not produce any errors:
-module = "app.apps.*.migrations.*"
+module = "app.migrations.*"
 ignore_errors = true
 
 [tool.django-stubs]
