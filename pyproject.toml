@@ -116,8 +116,13 @@ plugins = [
 module = "app.migrations.*"
 ignore_errors = true
 
+[[tool.mypy.overrides]]
+# django-stubs uses Any for models...
+module = "app.models.*"
+disallow_any_explicit = false
+
 [tool.django-stubs]
-django_settings_module = "app.settings"
+django_settings_module = "app.settings.base"
 
 [tool.pytest.ini_options]
 # pytest configuration:
