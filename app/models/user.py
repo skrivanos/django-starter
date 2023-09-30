@@ -12,3 +12,9 @@ class User(AbstractUser):
     """
 
     example = models.CharField(_("Example"), blank=True, max_length=255)
+
+    def __str__(self) -> str:
+        """
+        Returns the string representation of the `User`.
+        """
+        return str(self.username)

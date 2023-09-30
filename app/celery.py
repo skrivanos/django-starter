@@ -5,6 +5,10 @@ from typing import TYPE_CHECKING, Any
 from celery import Celery, Task
 
 
+# Monkey-patching for celery-types
+# https://github.com/sbdchd/celery-types
+Task.__class_getitem__ = classmethod(lambda cls, *args, **kwargs: cls)  # type: ignore[attr-defined]
+
 if TYPE_CHECKING:
     AnyTask = Task[Any, Any]  # type: ignore
 else:
@@ -26,7 +30,7 @@ app.autodiscover_tasks()
 
 
 @app.task(bind=True)
-def debug_task(self: AnyTask) -> None:
+def debug_task(self: AnyTask) -> None:  # type: ignore[misc]
     """
     Example task that prints the request.
     """

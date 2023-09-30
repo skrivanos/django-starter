@@ -21,6 +21,8 @@ per-file-ignores =
   app/management/commands/*.py: WPS421
   # Allow using asserts and magic numbers in tests
   tests/*.py: S101, WPS432
+  # Allow things needed for celery Task monkey-patching
+  app/celery.py: WPS117, WPS609
 
 # quotes
 inline_quotes = double
