@@ -50,7 +50,7 @@ factory-boy = "^3.3.0"
 
 # Typing
 celery-types = "^0.20.0"
-django-stubs = "^4.2.4"
+django-stubs = {extras = ["compatible-mypy"], version = "^4.2.4"}
 mypy = "1.5.1"
 
 
