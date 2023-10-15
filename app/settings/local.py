@@ -18,7 +18,7 @@ CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
         "LOCATION": "",
-    }
+    },
 }
 
 # Debug toolbar
@@ -26,7 +26,8 @@ INSTALLED_APPS += ["debug_toolbar", "extra_checks"]
 MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "querycount.middleware.QueryCountMiddleware",
-] + MIDDLEWARE
+    *MIDDLEWARE,
+]
 DEBUG_TOOLBAR_CONFIG = {
     "DISABLE_PANELS": [
         "debug_toolbar.panels.redirects.RedirectsPanel",

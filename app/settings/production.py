@@ -45,5 +45,6 @@ ANYMAIL = {
 
 # Sentry
 sentry_sdk.init(
-    dsn=env("SENTRY_DSN"), integrations=[DjangoIntegration(), CeleryIntegration()]
+    dsn=env("SENTRY_DSN"),
+    integrations=[DjangoIntegration(), CeleryIntegration()],
 )

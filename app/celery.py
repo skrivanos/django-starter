@@ -34,4 +34,4 @@ def debug_task(self: AnyTask) -> None:  # type: ignore[misc]
     """
     Example task that prints the request.
     """
-    print("Request: {0!r}".format(self.request))  # noqa: WPS421
+    print(f"Request: {self.request!r}")  # noqa: T201
