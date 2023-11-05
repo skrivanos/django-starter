@@ -130,7 +130,7 @@ convention = "google"
 known-first-party = ["app"]
 lines-between-types = 1
 lines-after-imports = 2
-section-order = ["future", "standard-library", "django", "first-party", "local-folder", "third-party"]
+section-order = ["future", "standard-library", "django", "third-party", "first-party", "local-folder"]
 
 [tool.ruff.isort.sections]
 "django" = ["django"]
