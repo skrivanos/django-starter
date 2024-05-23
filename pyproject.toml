@@ -6,7 +6,7 @@ authors = ["Alexander Skrivanos <alex@skrivanos.se>"]
 package-mode = false
 
 [tool.poetry.dependencies]
-python = "3.11.5"
+python = "3.12.3"
 
 # Django and django extensions
 django = "^5.0.6"
